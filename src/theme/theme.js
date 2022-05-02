@@ -30,6 +30,23 @@ const theme = extendTheme({
         }),
       },
     },
+    Container: {
+      baseStyle: {
+        maxW: '1300px',
+      },
+    },
+    Input: {
+      baseStyle: {
+        field: {
+          _focus: {
+            // borderColor: '#e94560',
+            // outline: 'nonne',
+            boxShadow: '0px 0px 1px #E94560',
+            // outline: '2px solid #E94560',
+          },
+        },
+      },
+    },
   },
 });
 

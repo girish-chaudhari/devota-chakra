@@ -1,11 +1,14 @@
 import React from 'react';
+import Header from '../common/Header';
 import TopAlert from '../components/TopAlert';
+import { Box } from '@chakra-ui/react';
 
 const Layout = () => {
   return (
-    <div>
+    <Box>
       <TopAlert />
-    </div>
+      <Header />
+    </Box>
   );
 };
 
