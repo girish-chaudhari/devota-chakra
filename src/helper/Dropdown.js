@@ -36,8 +36,19 @@ export const CountryDropDown = () => {
               India <GoChevronDown />
             </Flex>
           </MenuButton>
-          <MenuList minWidth="200px" color="black" w="200px">
-            <PopoverArrow bg="white" />
+          <MenuList
+            minWidth="200px"
+            color="black"
+            w="200px"
+            borderRadius="6px"
+            border="none"
+            boxShadow="rgb(0 0 0 / 16%) 0px 6px 12px"
+          >
+            <PopoverArrow
+              bg="white"
+              border="1px solid #e5e5e5"
+              boxShadow="rgb(0 0 0 / 16%) 0px 6px 12px"
+            />
             {[1, 2, 3, 4, 5].map((item, i) => (
               <MenuItem
                 p="8px 16px"
@@ -86,8 +97,19 @@ export const CountryLanguage = () => {
               India <GoChevronDown />
             </Flex>
           </MenuButton>
-          <MenuList minWidth="200px" color="black" w="200px">
-            <PopoverArrow bg="white" />
+          <MenuList
+            borderRadius="6px"
+            border="none"
+            boxShadow="rgb(0 0 0 / 16%) 0px 6px 12px"
+            minWidth="200px"
+            color="black"
+            w="200px"
+          >
+            <PopoverArrow
+              bg="white"
+              border="1px solid #e5e5e5"
+              boxShadow="rgb(0 0 0 / 16%) 0px 6px 12px"
+            />
             {[1, 2, 3, 4, 5].map((item, i) => (
               <MenuItem
                 p="8px 16px"
