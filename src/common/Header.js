@@ -1,28 +1,46 @@
-import React from 'react';
 import {
-  Flex,
-  Box,
-  Container,
-  Text,
-  ButtonGroup,
-  Button,
-  Icon,
-  Menu,
-  MenuItem,
-  MenuButton,
-  MenuList,
-  Input,
-  PopoverArrow,
-  Popover,
-  IconButton,
   Badge,
+  Box,
+  Button,
+  ButtonGroup,
+  Container,
+  Flex,
+  Icon,
+  IconButton,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+  Text,
 } from '@chakra-ui/react';
-import { FiSearch, FiUser } from 'react-icons/fi';
-import { GoChevronDown } from 'react-icons/go';
-import { FaShoppingBag } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { BsLaptop, BsMusicNoteBeamed } from 'react-icons/bs';
 import { CgMenuGridR } from 'react-icons/cg';
+import { FaChevronRight, FaDog, FaGifts, FaShoppingBag } from 'react-icons/fa';
+import { FcAutomotive } from 'react-icons/fc';
+import { FiSearch, FiUser } from 'react-icons/fi';
+import {
+  GiFairy,
+  GiLargeDress,
+  GiPineTree,
+  GiStumpRegrowth,
+} from 'react-icons/gi';
+import { GoChevronDown } from 'react-icons/go';
+import { MdToys } from 'react-icons/md';
+import { RiMotorbikeFill } from 'react-icons/ri';
 
 const Header = () => {
+  const [searchCategory, setSearchCategory] = useState('All Categories');
+  const [isOpen, setIsOpen] = useState(false);
+  const open = () => setIsOpen(!isOpen);
+  const close = () => setIsOpen(false);
+
   return (
     <Box pb="10px" boxShadow="rgb(43 52 69 / 10%) 0px 4px 16px">
       <Container>
@@ -78,10 +96,10 @@ const Header = () => {
                   border: 'none',
                 }}
               />
-              <Popover>
+              <Popover placement="bottom-left">
                 <Menu>
                   <MenuButton
-                    minWidth="120px"
+                    minWidth="min-content"
                     background="none"
                     as={Button}
                     borderRight="none"
@@ -89,7 +107,7 @@ const Header = () => {
                     borderBottom="none"
                     rightIcon={<GoChevronDown />}
                   >
-                    Actions
+                    {searchCategory}
                   </MenuButton>
                   <MenuList>
                     <PopoverArrow
@@ -97,12 +115,28 @@ const Header = () => {
                       border="1px solid #bcbcbc"
                       boxShadow="rgb(0 0 0 / 16%) 0px 6px 12px"
                     />
-                    <MenuItem>All Categories</MenuItem>
-                    <MenuItem>Toys</MenuItem>
-                    <MenuItem>Electronics</MenuItem>
-                    <MenuItem>Camera</MenuItem>
-                    <MenuItem>Home Appliances</MenuItem>
-                    <MenuItem>Home styles</MenuItem>
+                    <MenuItem
+                      onClick={() => setSearchCategory('All Categories')}
+                    >
+                      All Categories
+                    </MenuItem>
+                    <MenuItem onClick={() => setSearchCategory('Toys')}>
+                      Toys
+                    </MenuItem>
+                    <MenuItem onClick={() => setSearchCategory('Electronics')}>
+                      Electronics
+                    </MenuItem>
+                    <MenuItem onClick={() => setSearchCategory('Camera')}>
+                      Camera
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => setSearchCategory('Home Appliances')}
+                    >
+                      Home Appliances
+                    </MenuItem>
+                    <MenuItem onClick={() => setSearchCategory('Home styles')}>
+                      Home styles
+                    </MenuItem>
                   </MenuList>
                 </Menu>
               </Popover>
@@ -158,11 +192,303 @@ const Header = () => {
                 Categories
               </MenuButton>
               <MenuList>
-                <MenuItem>Fashion</MenuItem>
-                <MenuItem>New Window</MenuItem>
-                {/* <MenuDivider /> */}
-                <MenuItem>Open...</MenuItem>
-                <MenuItem>Save File</MenuItem>
+                <Popover
+                  returnFocusOnClose={false}
+                  isOpen={isOpen}
+                  onClose={close}
+                  placement="right-start"
+                  closeOnBlur={false}
+                >
+                  <PopoverTrigger>
+                    <MenuItem
+                      padding="8px 16px"
+                      _hover={{
+                        color: 'rgb(233, 69, 96)',
+                      }}
+                    >
+                      <Flex
+                        onMouseOver={open}
+                        onMouseOut={close}
+                        justifyContent="space-between"
+                        alignItems="center"
+                        flexGrow={1}
+                      >
+                        <Flex gap="15px" alignItems="center">
+                          <Icon as={GiLargeDress} />
+                          <Box>Fashion</Box>
+                        </Flex>
+                        <Icon as={FaChevronRight} />
+                      </Flex>
+                    </MenuItem>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    boxShadow="none"
+                    onMouseOver={open}
+                    _focus={{
+                      boxShadow: 'none',
+                    }}
+                    onMouseOut={close}
+                  >
+                    {/* <PopoverArrow /> */}
+
+                    <PopoverBody>
+                      Are you sure you want to continue with your action?
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+
+                <Popover
+                  returnFocusOnClose={false}
+                  isOpen={isOpen}
+                  onClose={close}
+                  placement="right-start"
+                  closeOnBlur={false}
+                >
+                  <PopoverTrigger>
+                    <MenuItem
+                      padding="8px 16px"
+                      _hover={{
+                        color: 'rgb(233, 69, 96)',
+                      }}
+                    >
+                      <Flex
+                        onMouseOver={open}
+                        onMouseOut={close}
+                        justifyContent="space-between"
+                        alignItems="center"
+                        flexGrow={1}
+                      >
+                        <Flex gap="15px" alignItems="center">
+                          <Icon as={BsLaptop} />
+                          <Box>Electronics</Box>
+                        </Flex>
+                        <Icon as={FaChevronRight} />
+                      </Flex>
+                    </MenuItem>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    boxShadow="none"
+                    onMouseOver={open}
+                    _focus={{
+                      boxShadow: 'none',
+                    }}
+                    onMouseOut={close}
+                  >
+                    {/* <PopoverArrow /> */}
+
+                    <PopoverBody>
+                      Are you sure you want to continue with your action?
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+
+                <Popover
+                  returnFocusOnClose={false}
+                  isOpen={isOpen}
+                  onClose={close}
+                  placement="right-start"
+                  closeOnBlur={false}
+                >
+                  <PopoverTrigger>
+                    <MenuItem
+                      padding="8px 16px"
+                      _hover={{
+                        color: 'rgb(233, 69, 96)',
+                      }}
+                    >
+                      <Flex
+                        justifyContent="space-between"
+                        alignItems="center"
+                        flexGrow={1}
+                        onMouseOver={open}
+                        onMouseOut={close}
+                      >
+                        <Flex gap="15px" alignItems="center">
+                          <Icon as={RiMotorbikeFill} />
+                          <Box>Bikes</Box>
+                        </Flex>
+                        <Icon as={FaChevronRight} />
+                      </Flex>
+                    </MenuItem>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    boxShadow="none"
+                    onMouseOver={open}
+                    _focus={{
+                      boxShadow: 'none',
+                    }}
+                    onMouseOut={close}
+                  >
+                    {/* <PopoverArrow /> */}
+
+                    <PopoverBody>
+                      Are you sure you want to continue with your action?
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+
+                <Popover
+                  returnFocusOnClose={false}
+                  isOpen={isOpen}
+                  onClose={close}
+                  placement="right-start"
+                  closeOnBlur={false}
+                >
+                  <PopoverTrigger>
+                    <MenuItem
+                      padding="8px 16px"
+                      _hover={{
+                        color: 'rgb(233, 69, 96)',
+                      }}
+                    >
+                      <Flex
+                        justifyContent="space-between"
+                        alignItems="center"
+                        flexGrow={1}
+                        onMouseOver={open}
+                        onMouseOut={close}
+                      >
+                        <Flex gap="15px" alignItems="center">
+                          <Icon as={GiPineTree} />
+                          <Box>Home & Garden</Box>
+                        </Flex>
+                        <Icon as={FaChevronRight} />
+                      </Flex>
+                    </MenuItem>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    boxShadow="none"
+                    onMouseOver={open}
+                    _focus={{
+                      boxShadow: 'none',
+                    }}
+                    onMouseOut={close}
+                  >
+                    {/* <PopoverArrow /> */}
+
+                    <PopoverBody>
+                      Are you sure you want to continue with your action?
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+
+                <Popover
+                  returnFocusOnClose={false}
+                  isOpen={isOpen}
+                  onClose={close}
+                  placement="right-start"
+                  closeOnBlur={false}
+                >
+                  <PopoverTrigger>
+                    <MenuItem
+                      padding="8px 16px"
+                      _hover={{
+                        color: 'rgb(233, 69, 96)',
+                      }}
+                    >
+                      <Flex
+                        justifyContent="space-between"
+                        alignItems="center"
+                        flexGrow={1}
+                        onMouseOver={open}
+                        onMouseOut={close}
+                      >
+                        <Flex gap="15px" alignItems="center">
+                          <Icon as={FaGifts} />
+                          <Box>Gifts</Box>
+                        </Flex>
+                        <Icon as={FaChevronRight} />
+                      </Flex>
+                    </MenuItem>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    boxShadow="none"
+                    onMouseOver={open}
+                    _focus={{
+                      boxShadow: 'none',
+                    }}
+                    onMouseOut={close}
+                  >
+                    {/* <PopoverArrow /> */}
+
+                    <PopoverBody>
+                      Are you sure you want to continue with your action?
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+
+                <MenuItem>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    flexGrow={1}
+                  >
+                    <Flex gap="15px" alignItems="center">
+                      <Icon as={BsMusicNoteBeamed} />
+                      <Box>Music</Box>
+                    </Flex>
+                  </Flex>
+                </MenuItem>
+                <MenuItem>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    flexGrow={1}
+                  >
+                    <Flex gap="15px" alignItems="center">
+                      <Icon as={GiFairy} />
+                      <Box>Health & Beauty</Box>
+                    </Flex>
+                  </Flex>
+                </MenuItem>
+                <MenuItem>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    flexGrow={1}
+                  >
+                    <Flex gap="15px" alignItems="center">
+                      <Icon as={FaDog} />
+                      <Box>Pets</Box>
+                    </Flex>
+                  </Flex>
+                </MenuItem>
+                <MenuItem>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    flexGrow={1}
+                  >
+                    <Flex gap="15px" alignItems="center">
+                      <Icon as={MdToys} />
+                      <Box>Baby Toys</Box>
+                    </Flex>
+                  </Flex>
+                </MenuItem>
+                <MenuItem>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    flexGrow={1}
+                  >
+                    <Flex gap="15px" alignItems="center">
+                      <Icon as={GiStumpRegrowth} />
+                      <Box>Groceries</Box>
+                    </Flex>
+                  </Flex>
+                </MenuItem>
+                <MenuItem>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    flexGrow={1}
+                  >
+                    <Flex gap="15px" alignItems="center">
+                      <Icon as={FcAutomotive} />
+                      <Box>Automotive</Box>
+                    </Flex>
+                  </Flex>
+                </MenuItem>
               </MenuList>
             </Menu>
           </Box>
